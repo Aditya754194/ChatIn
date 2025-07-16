@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:wght@300;400;500;600&family=Protest+Riot&family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap');
+@import "tailwindcss";
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
