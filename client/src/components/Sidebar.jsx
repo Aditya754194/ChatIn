@@ -12,7 +12,11 @@ const Sidebar = () => {
 
   const [input, setInput] = useState(false);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
+
+  
 
   const filteredUsers = input ? users.filter((user)=>user.fullName.toLowerCase(). 
   includes(input.toLowerCase())) : users;
@@ -27,12 +31,14 @@ const Sidebar = () => {
         <div className='flex justify-between items-center'>
           <h1 className='font-bold text-2xl ml-2'>ChatIn</h1>
           <div className='relative py-2 group'>
-            <img src={assets.menu_icon} alt="Menu" className='max-h-4 sm:max-h-5 cursor-pointer' />
-            <div className='absolute top-full right-0 z-20 w-28 sm:w-32 p-3 sm:p-4 lg:p-5 rounded-md bg-[#282142] border border-gray-600 text-gray-100 hidden group-hover:block'>
+            <img src={assets.menu_icon} alt="Menu" className='max-h-4 sm:max-h-5 cursor-pointer ' onClick={() => setIsMenuOpen(!isMenuOpen)} />
+            {isMenuOpen && (
+              <div className='absolute top-full right-0 z-20 w-28 sm:w-32 p-3 sm:p-4 lg:p-5 rounded-md bg-[#282142] border border-gray-600 text-gray-100'>
               <p onClick={() => navigate('/profile')} className='cursor-pointer text-xs sm:text-sm hover:text-white transition-colors'>Edit Profile</p>
               <hr className='my-2 border-t border-gray-500' />
               <p onClick={()=> logout()} className='cursor-pointer text-xs sm:text-sm hover:text-white transition-colors'>Logout</p>
             </div>
+            )}
           </div>
         </div>
         <div className='bg-[#402f7d] rounded-full flex items-center gap-2 py-2 sm:py-3 px-3 sm:px-4 mt-3 sm:mt-4 lg:mt-5'>
